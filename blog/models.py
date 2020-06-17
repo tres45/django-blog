@@ -30,6 +30,7 @@ class Tag(models.Model):
     def __str__(self):
         return f'Tag {self.title}'
 
+    @property
     def rating(self):
         """Get count of articles with current tag"""
         return self.article_set.count()
@@ -68,6 +69,7 @@ class Comment(models.Model):
     def __str__(self):
         return f'Comment {self.author} - {self.article}'
 
+    @property
     def is_article_author(self):
         """Check if author comments own article"""
         return self.author == self.article.author
